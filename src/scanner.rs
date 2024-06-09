@@ -30,6 +30,7 @@ impl Scanner {
         keywords.insert("true", TokenType::True);
         keywords.insert("var", TokenType::Var);
         keywords.insert("while", TokenType::While);
+        keywords.insert("for", TokenType::For);
 
         Self { source: source.to_owned(), line: 1, ..Default::default() }
     }
