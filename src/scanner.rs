@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::{lox, token::{Token, TokenType::{self}}};
+use crate::{error, token::{Token, TokenType}};
 
 #[derive(Default)]
 pub struct Scanner {
@@ -117,7 +117,7 @@ impl Scanner {
                 } else if c.is_alphabetic() {
                     self.identifier()
                 } else {
-                    lox::error(self.line, "Unexpected Character.");
+                    error(self.line, "Unexpected Character.");
                 }
             }
         }
@@ -149,7 +149,7 @@ impl Scanner {
             }
         }
         if self.is_at_end() {
-            lox::error(self.line, "Unterminated string.");
+            error(self.line, "Unterminated string.");
             return;
         }
         self.advance();
